@@ -1,0 +1,41 @@
+# Spec self-enforcement. This workflow runs the same lint scripts that
+# downstream projects can copy into their own repos.
+#
+# This workflow itself follows docs/ci-cd.md:
+#  - pull_request trigger only (no `on: push` for arbitrary branches)
+#  - concurrency group cancels superseded runs
+#  - path filter avoids re-running for trivial changes
+
+name: Lint
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  spec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need history back to the merge base for commit-range lint.
+          fetch-depth: 0
+
+      - name: Branch name
+        run: ./scripts/lint-branch-name.sh "${{ github.head_ref }}"
+
+      - name: Commit messages
+        run: ./scripts/lint-commit-msg.sh "origin/${{ github.base_ref }}..HEAD"
+
+      - name: Bilingual symmetry
+        run: ./scripts/check-bilingual.sh docs
+
+      - name: Internal links
+        run: ./scripts/check-links.sh

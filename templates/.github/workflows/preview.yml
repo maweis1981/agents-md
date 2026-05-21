@@ -1,0 +1,53 @@
+# PR-only preview workflow that follows the agents-md spec.
+# Drop this file into your repo at: .github/workflows/preview.yml
+#
+# Rules it enforces:
+#  - No `on: push` for branches other than main.
+#  - Concurrency group cancels superseded runs (debounce).
+#  - Path filter avoids re-running for docs-only PRs.
+#  - Production deploy job is gated to `main` only.
+
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+      - 'LICENSE'
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, type-check, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Replace with whatever your stack uses.
+      - name: Setup
+        run: echo "TODO: setup Node / Python / Go"
+
+      - name: Lint
+        run: echo "TODO: pnpm lint / ruff / etc."
+
+      - name: Type-check
+        run: echo "TODO: pnpm typecheck / mypy / etc."
+
+      - name: Test
+        run: echo "TODO: pnpm test / pytest / etc."
+
+  # Optional preview deploy — keep behind a path-filter or label so
+  # not every push fires it.
+  preview-deploy:
+    name: Preview deploy
+    needs: verify
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO: deploy to a preview environment"

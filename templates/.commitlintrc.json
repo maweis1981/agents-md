@@ -1,0 +1,18 @@
+{
+  "_comment": "Drop this into your project root as .commitlintrc.json (rename, dropping the leading dot if your tool needs that). Enforces the agents-md commit rules via @commitlint/cli + @commitlint/config-conventional.",
+  "extends": ["@commitlint/config-conventional"],
+  "rules": {
+    "type-enum": [
+      2,
+      "always",
+      ["feat", "fix", "refactor", "docs", "chore", "test", "perf", "build", "ci", "style", "revert"]
+    ],
+    "subject-empty": [2, "never"],
+    "subject-min-length": [2, "always", 10],
+    "subject-max-length": [2, "always", 100],
+    "subject-case": [2, "never", ["start-case", "pascal-case", "upper-case"]],
+    "header-max-length": [2, "always", 100],
+    "type-empty": [2, "never"],
+    "type-case": [2, "always", "lower-case"]
+  }
+}
