@@ -45,6 +45,24 @@ available in English and 简体中文.
 | Monorepo specifics | [`monorepo.md`](./monorepo.md) | [`monorepo.zh-CN.md`](./monorepo.zh-CN.md) |
 | Case study | [`case-study.md`](./case-study.md) | [`case-study.zh-CN.md`](./case-study.zh-CN.md) |
 
+## AI-specific concerns
+
+| Topic | English | 中文 |
+| --- | --- | --- |
+| Secrets & credentials | [`secrets.md`](./secrets.md) | [`secrets.zh-CN.md`](./secrets.zh-CN.md) |
+| Prompts as code | [`prompts.md`](./prompts.md) | [`prompts.zh-CN.md`](./prompts.zh-CN.md) |
+| Evals for AI features | [`evals.md`](./evals.md) | [`evals.zh-CN.md`](./evals.zh-CN.md) |
+| Observability & cost guardrails | [`observability.md`](./observability.md) | [`observability.zh-CN.md`](./observability.zh-CN.md) |
+
+## Platform engineering
+
+| Topic | English | 中文 |
+| --- | --- | --- |
+| IDP integration (Backstage / Harness / Port / Cortex) | [`idp-integration.md`](./idp-integration.md) | [`idp-integration.zh-CN.md`](./idp-integration.zh-CN.md) |
+| CODEOWNERS & review routing | [`codeowners.md`](./codeowners.md) | [`codeowners.zh-CN.md`](./codeowners.zh-CN.md) |
+| Documentation freshness | [`doc-freshness.md`](./doc-freshness.md) | [`doc-freshness.zh-CN.md`](./doc-freshness.zh-CN.md) |
+| DORA metrics for AI teams | [`dora.md`](./dora.md) | [`dora.zh-CN.md`](./dora.zh-CN.md) |
+
 ## See also
 
 - [`../STANDARDS.md`](../STANDARDS.md) — Full single-file English spec.
