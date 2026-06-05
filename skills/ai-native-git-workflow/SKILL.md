@@ -26,7 +26,7 @@ on **every** Git-touching action.
 
 - Conventional Commits format: `type: short imperative summary`.
 - Allowed types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`,
-  `perf`, `build`, `ci`.
+  `perf`, `build`, `ci`, `style`, `revert`.
 - Forbidden messages: `update`, `fix`, `changes`, `wip`, `tmp`, `asdf`,
   `.`, `test`, `new`, anything single-word.
 

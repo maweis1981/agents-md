@@ -48,7 +48,13 @@ type: short imperative summary
 ```
 
 `type` ∈ {`feat`, `fix`, `refactor`, `docs`, `chore`, `test`, `perf`,
-`build`, `ci`}。
+`build`, `ci`, `style`, `revert`}。
+
+两个不太常用类型的说明：
+
+- `style` —— 纯格式（空白、import 排序）。优先并入下一次
+  `refactor` / `feat`；只在工具批量格式化时单独用 `style:`。
+- `revert` —— 通常由 `git revert` 自动生成。手写时正文里引用被回退的 SHA。
 
 可选 scope：
 

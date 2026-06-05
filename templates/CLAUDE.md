@@ -16,8 +16,8 @@ rules below on every change. Hard rules are non-negotiable.
    commit per stable, coherent feature.
 3. **Commit messages** follow Conventional Commits:
    `type: short summary` (`feat`, `fix`, `refactor`, `docs`, `chore`,
-   `test`, `perf`, `build`, `ci`). No `wip`, `tmp`, `update`, `fix`,
-   `asdf`.
+   `test`, `perf`, `build`, `ci`, `style`, `revert`). No `wip`, `tmp`,
+   `update`, `fix`, `asdf`.
 4. **One PR = one feature.** Open as a draft. Squash merge only.
 5. **No `on: push` full deploys.** PR-only / manual dispatch only.
 6. **DB migrations**: direct connection. Runtime: pooled connection.
