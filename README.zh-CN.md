@@ -67,7 +67,7 @@ git submodule add https://github.com/maweis1981/agents-md docs/agents-md
 ```
 
 > **URL 稳定性提示**：上面的 `curl` 指向 `main`。如果想要可复现的安装，
-> 把 `main` 换成 tag（例如 `v0.1.0`），免得本仓后续演化导致你的依赖漂移。
+> 把 `main` 换成 tag（例如 `v0.2.0`），免得本仓后续演化导致你的依赖漂移。
 
 ### 方式 D —— 在 CI 里强制规则
 
@@ -95,8 +95,9 @@ git submodule add https://github.com/maweis1981/agents-md docs/agents-md
 
 ## 状态
 
-`v0.1.0` —— 创始版本。规范本身已可投入使用，破坏性变更仅会发生在
-major 版本。
+`v0.2.0` —— 在创始版本之上新增 AI 专属（secrets / prompts / evals /
+observability）与平台工程（IDP / CODEOWNERS / doc-freshness / DORA）
+两组章节。规范本身已可投入使用，破坏性变更仅会发生在 major 版本。
 
 ## 贡献
 

@@ -1,6 +1,6 @@
 # AI Agent Git / GitHub 开发规范（AI-Native Workflow）
 
-> 版本 `0.1.0` —— 创始版本
+> 版本 `0.2.0` —— AI 专属议题 + 平台工程扩展
 >
 > 一份关于 AI Agent 在 Git、GitHub、CI/CD、数据库和 Serverless
 > 基础设施上行为方式的规范，针对 "vibe coding" 高速开发场景。
