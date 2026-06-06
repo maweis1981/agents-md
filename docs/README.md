@@ -63,6 +63,12 @@ available in English and 简体中文.
 | Documentation freshness | [`doc-freshness.md`](./doc-freshness.md) | [`doc-freshness.zh-CN.md`](./doc-freshness.zh-CN.md) |
 | DORA metrics for AI teams | [`dora.md`](./dora.md) | [`dora.zh-CN.md`](./dora.zh-CN.md) |
 
+## Meta
+
+| Topic | English | 中文 |
+| --- | --- | --- |
+| Promotion (for OSS spec projects) | [`promotion.md`](./promotion.md) | [`promotion.zh-CN.md`](./promotion.zh-CN.md) |
+
 ## See also
 
 - [`../STANDARDS.md`](../STANDARDS.md) — Full single-file English spec.
