@@ -7,6 +7,10 @@
 >
 > English version: [`STANDARDS.md`](./STANDARDS.md)
 
+> **权威源。** 本文件是规则的唯一 source of truth。`docs/` 下是按章节
+> 展开，`skills/` 下是给 AI Agent 加载的同套规则的另一种编码。
+> 三者出现分歧时，**以本文件为准**，其他文件必须对齐更新。
+
 ---
 
 ## 文档目标
@@ -149,6 +153,9 @@ AI branch 必须**短生命周期**，功能完成立即合并。
 type: feature summary
 ```
 
+允许的 `type`：`feat` / `fix` / `refactor` / `docs` / `chore` / `test`
+/ `perf` / `build` / `ci` / `style` / `revert`。
+
 示例：
 
 ```
@@ -167,6 +174,9 @@ changes
 wip
 tmp
 asdf
+.
+test
+new
 ```
 
 ---
@@ -426,3 +436,34 @@ Git 本身并不是为 AI Agent 协作设计的。未来会逐渐出现：
 **当前规范是 AI Coding 时代下，对传统 Git 工作流的兼容层。**
 
 更完整的展望见 [`docs/outlook.zh-CN.md`](./docs/outlook.zh-CN.md)。
+
+---
+
+## 十七、AI 专属议题
+
+前 16 节覆盖 Git / GitHub / CI / DB / Serverless 卫生 —— 不论是否
+有 AI 参与都适用的议题。下面这几节是**因为有 AI 参与**而出现的议题。
+每一节都在 `docs/` 下有专章：
+
+- **17.1 Secrets 与凭据**：禁止 long-lived PAT；OIDC 短期 token；
+  `.env` 不入库；pre-commit secret 扫描。
+  见 [`docs/secrets.zh-CN.md`](./docs/secrets.zh-CN.md)。
+- **17.2 Prompt 即代码**：版本化、review、和 eval 配对、超 10 行不准
+  inline。见 [`docs/prompts.zh-CN.md`](./docs/prompts.zh-CN.md)。
+- **17.3 AI 功能的 Evals**：每个 prompt 一套 eval；PR 跑；回归阻断
+  合并；阈值入库。见 [`docs/evals.zh-CN.md`](./docs/evals.zh-CN.md)。
+- **17.4 可观测性与成本闸**：每次 LLM 调用 trace；记 prompt 版本 +
+  token + 成本；PII 脱敏；per-session 预算；熔断器。
+  见 [`docs/observability.zh-CN.md`](./docs/observability.zh-CN.md)。
+
+## 十八、平台工程
+
+- **18.1 IDP 接入**：连接 Backstage / Harness IDP / Port / Cortex。
+  见 [`docs/idp-integration.zh-CN.md`](./docs/idp-integration.zh-CN.md)。
+- **18.2 CODEOWNERS 与 review 路由**：AI diff 对高爆炸路径需要额外
+  review。见 [`docs/codeowners.zh-CN.md`](./docs/codeowners.zh-CN.md)。
+- **18.3 文档新鲜度**：耦合 doc 路径与代码路径；强制同 PR 更新；
+  删过期。见 [`docs/doc-freshness.zh-CN.md`](./docs/doc-freshness.zh-CN.md)。
+- **18.4 AI 修正版 DORA**：保留四个 DORA 指标；按 AI 节奏重定义
+  Lead Time 和 Deployment Frequency；AI 作者与人类作者分线跟踪。
+  见 [`docs/dora.zh-CN.md`](./docs/dora.zh-CN.md)。

@@ -8,6 +8,12 @@
 >
 > 中文版本：[`STANDARDS.zh-CN.md`](./STANDARDS.zh-CN.md)
 
+> **Canonical source.** This file is the single source of truth for
+> the rules. Files under `docs/` expand on individual chapters;
+> packages under `skills/` re-encode the same rules for AI agent
+> consumption. When any of them disagree with this file, **this file
+> wins** and the others must be updated.
+
 ---
 
 ## Goals
@@ -156,6 +162,9 @@ Forbidden (too small):
 type: feature summary
 ```
 
+Allowed `type` values: `feat`, `fix`, `refactor`, `docs`, `chore`,
+`test`, `perf`, `build`, `ci`, `style`, `revert`.
+
 Examples:
 
 ```
@@ -174,6 +183,9 @@ changes
 wip
 tmp
 asdf
+.
+test
+new
 ```
 
 ---
@@ -460,3 +472,41 @@ expect to see:
 and traditional Git workflows.**
 
 See [`docs/outlook.md`](./docs/outlook.md) for the long view.
+
+---
+
+## 17. AI-specific concerns
+
+The original 16 sections cover Git, GitHub, CI, DB and serverless
+hygiene — concerns that apply whether or not AI is involved. The
+sections below cover concerns that arise *because* AI is involved.
+Each has a dedicated chapter under `docs/`:
+
+- **17.1 Secrets & credentials.** No long-lived PATs; OIDC short-term
+  tokens; no `.env` in commits; pre-commit secret scanning. See
+  [`docs/secrets.md`](./docs/secrets.md).
+- **17.2 Prompts as code.** Versioned, reviewed, paired with evals,
+  no inline > 10 lines. See [`docs/prompts.md`](./docs/prompts.md).
+- **17.3 Evals for AI features.** Every prompt has a suite; PRs run
+  it; regressions block merge; thresholds in repo. See
+  [`docs/evals.md`](./docs/evals.md).
+- **17.4 Observability & cost guardrails.** Trace every LLM call,
+  log prompt version + token + cost, redact PII, set per-session
+  budget, run a circuit breaker. See
+  [`docs/observability.md`](./docs/observability.md).
+
+## 18. Platform engineering
+
+- **18.1 IDP integration.** Connecting `agents-md` to Backstage /
+  Harness IDP / Port / Cortex. See
+  [`docs/idp-integration.md`](./docs/idp-integration.md).
+- **18.2 CODEOWNERS & review routing.** AI diffs need extra review
+  on high-blast-radius paths. See
+  [`docs/codeowners.md`](./docs/codeowners.md).
+- **18.3 Documentation freshness.** Couple doc paths to code paths;
+  enforce same-PR doc updates; delete stale docs. See
+  [`docs/doc-freshness.md`](./docs/doc-freshness.md).
+- **18.4 DORA metrics, AI-adapted.** Keep all four DORA metrics;
+  redefine Lead Time and Deployment Frequency to match AI cadence;
+  split AI-authored from human-authored series. See
+  [`docs/dora.md`](./docs/dora.md).

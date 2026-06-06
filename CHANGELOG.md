@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added — AI-specific & platform-engineering chapters
+
+- `docs/secrets.md` (+ zh-CN) — secrets, credentials, OIDC, redaction.
+- `docs/prompts.md` (+ zh-CN) — prompts as code, semver, A/B variants.
+- `docs/evals.md` (+ zh-CN) — eval suites, thresholds, regression
+  blocking, tooling map.
+- `docs/observability.md` (+ zh-CN) — per-call trace, OTel GenAI
+  conventions, PII redaction, budget guardrails, circuit breaker.
+- `docs/idp-integration.md` (+ zh-CN) — Backstage / Harness IDP /
+  Port / Cortex integration, Backstage Scaffolder template,
+  OPA policy sketch.
+- `docs/codeowners.md` (+ zh-CN) and `templates/CODEOWNERS` —
+  high-blast-radius routing, additional reviewers for AI-authored
+  PRs.
+- `docs/doc-freshness.md` (+ zh-CN) — `.doc-coupling.yml` pattern,
+  stale-doc deletion, freshness signals.
+- `docs/dora.md` (+ zh-CN) — AI-adapted DORA metrics, two AI-specific
+  companions (junk-commit ratio, eval pass rate).
+- `STANDARDS.md` §17 / §18 — pointer indexes to the new chapters.
+
+### Changed
+
+- `STANDARDS.md` / `STANDARDS.zh-CN.md`:
+  - Banned commit message list aligned to 9 items (was 6) — matches
+    `docs/commits.md`, skills and `scripts/lint-commit-msg.sh`.
+  - Conventional Commits type list expanded to 11 — adds `style` and
+    `revert` to match the lint scripts and commitlint template.
+  - "Canonical source" disclaimer added at the top.
+- `docs/commits.md` / `.zh-CN.md`, all `skills/*/SKILL.md`,
+  `templates/CLAUDE.md`, `templates/AGENTS.md` — type list updated
+  to 11.
+
 ## [0.1.0] - 2026-05-20
 
 ### Added — Founding release

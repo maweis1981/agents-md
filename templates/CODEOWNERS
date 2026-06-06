@@ -1,0 +1,54 @@
+# CODEOWNERS — drop-in template aligned with the agents-md standard.
+#
+# Copy to your repo root as `CODEOWNERS` (or `.github/CODEOWNERS` /
+# `docs/CODEOWNERS`) and replace @team-* / @<user> placeholders with
+# the actual teams in your GitHub org.
+#
+# Rules of thumb:
+#   - High-blast-radius paths get TWO owners.
+#   - Owners are *teams* where possible, not individuals.
+#   - `*` at top is a sane default; later rules override per-path.
+#   - Update this file via PR like any other code change.
+
+# ---------------------------------------------------------------------------
+# Default — any file not matched by a later rule.
+* @org/default-reviewers
+
+# ---------------------------------------------------------------------------
+# Database / migrations — direct connection touched here.
+/prisma/                              @org/platform @org/dba
+/drizzle/                             @org/platform @org/dba
+/migrations/                          @org/platform @org/dba
+
+# ---------------------------------------------------------------------------
+# Auth, IAM, sessions.
+/lib/auth/                            @org/security
+/middleware/auth/                     @org/security
+/app/api/auth/                        @org/security
+
+# ---------------------------------------------------------------------------
+# CI / workflows — accidental changes here are expensive.
+/.github/workflows/                   @org/platform
+/scripts/                             @org/platform
+/scripts/deploy/                      @org/platform @org/sre
+
+# ---------------------------------------------------------------------------
+# Payment / billing.
+/lib/billing/                         @org/finance @org/platform
+/app/api/billing/                     @org/finance @org/platform
+
+# ---------------------------------------------------------------------------
+# Prompts + evals — code review + LLM domain review.
+/prompts/                             @org/llm @org/product
+/evals/                               @org/llm @org/product
+
+# ---------------------------------------------------------------------------
+# Secrets / config schema.
+/.env.example                         @org/security
+/config/                              @org/platform
+
+# ---------------------------------------------------------------------------
+# The spec itself, if you vendor agents-md into your repo.
+/CLAUDE.md                            @org/maintainers
+/AGENTS.md                            @org/maintainers
+/docs/agents-md/                      @org/maintainers

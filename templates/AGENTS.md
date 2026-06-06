@@ -26,7 +26,7 @@
 - **Stack**: <e.g. Next.js + Prisma + Neon, deployed on Vercel>.
 - **Branches**: `ai/<feature-name>`, kebab-case, short-lived.
 - **Commits**: Conventional Commits — `feat`, `fix`, `refactor`,
-  `docs`, `chore`, `test`, `perf`, `build`, `ci`.
+  `docs`, `chore`, `test`, `perf`, `build`, `ci`, `style`, `revert`.
 - **Tests**: `<your test command>`.
 - **Lint**: `<your lint command>`.
 - **Migrations**: `<your migration command>`; uses `DIRECT_URL`.

@@ -26,7 +26,9 @@ optional body explaining why (wrap ~72 cols)
 ```
 
 Allowed `type`: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`,
-`perf`, `build`, `ci`. Scopes (`type(scope): …`) are optional.
+`perf`, `build`, `ci`, `style`, `revert`. Scopes (`type(scope): …`)
+are optional. Prefer folding `style` into the next `refactor`/`feat`
+and let `git revert` generate `revert` for you.
 
 ### Good examples
 
