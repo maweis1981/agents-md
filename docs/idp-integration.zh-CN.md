@@ -69,7 +69,7 @@ spec:
     - id: agents-md
       action: fetch:plain
       input:
-        url: https://raw.githubusercontent.com/maweis1981/agents-md/v0.1.0/templates/
+        url: https://raw.githubusercontent.com/maweis1981/agents-md/v0.2.0/templates/
         targetPath: .
 ```
 

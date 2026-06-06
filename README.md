@@ -70,7 +70,7 @@ git submodule add https://github.com/maweis1981/agents-md docs/agents-md
 
 > **Tip on stable URLs**: The `curl` commands above point at `main`.
 > For a reproducible setup, replace `main` with a tagged release
-> (e.g. `v0.1.0`) so your install pinning doesn't drift when this
+> (e.g. `v0.2.0`) so your install pinning doesn't drift when this
 > repo evolves.
 
 ### Option D — Enforce the rules in CI
@@ -102,8 +102,10 @@ The full ruleset, including rationale and examples, lives in
 
 ## Status
 
-`v0.1.0` — founding release. The spec is stable enough to adopt, and we
-expect breaking changes only at major version bumps.
+`v0.2.0` — adds AI-specific (secrets / prompts / evals / observability)
+and platform-engineering (IDP / CODEOWNERS / doc-freshness / DORA)
+chapters on top of the founding release. The spec is stable enough to
+adopt, and we expect breaking changes only at major version bumps.
 
 ## Contributing
 

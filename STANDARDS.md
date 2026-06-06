@@ -1,6 +1,6 @@
 # AI-Native Development Standards
 
-> Version `0.1.0` — Founding release
+> Version `0.2.0` — AI-specific & platform-engineering expansion
 >
 > A specification for AI Agent behavior on Git, GitHub, CI/CD,
 > databases and serverless infrastructure during high-velocity
