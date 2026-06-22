@@ -53,6 +53,7 @@ available in English and 简体中文.
 | Prompts as code | [`prompts.md`](./prompts.md) | [`prompts.zh-CN.md`](./prompts.zh-CN.md) |
 | Evals for AI features | [`evals.md`](./evals.md) | [`evals.zh-CN.md`](./evals.zh-CN.md) |
 | Observability & cost guardrails | [`observability.md`](./observability.md) | [`observability.zh-CN.md`](./observability.zh-CN.md) |
+| Machine-readable vendor docs | [`machine-readable-docs.md`](./machine-readable-docs.md) | [`machine-readable-docs.zh-CN.md`](./machine-readable-docs.zh-CN.md) |
 
 ## Platform engineering
 

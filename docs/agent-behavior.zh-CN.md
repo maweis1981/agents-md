@@ -17,6 +17,13 @@
 
 若有近似匹配，**扩展它**而不是再写一个平行版本。
 
+Agent 需要**外部**信息时 —— vendor 的 design token、SDK 形状、配置
+schema —— 同样的规则往外推一层：**先看 vendor 有没有暴露机器可读 Markdown
+端点**（比如 Vercel 的 [`/design.md`](https://vercel.com/design.md)
+和 [`/design.dark.md`](https://vercel.com/design.dark.md)，或者
+`llms.txt` 风格的端点），**再考虑抓 HTML 或凭感觉写**。
+见 [`machine-readable-docs.zh-CN.md`](./machine-readable-docs.zh-CN.md)。
+
 为什么：AI Agent 有极强的"生成"偏好。不约束就会永久放大维护面。
 重复的 `useDebounce`、`Button`、`formatDate`、auth schema —— 每一个都会
 拖累团队几年。

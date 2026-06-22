@@ -455,6 +455,10 @@ Git 本身并不是为 AI Agent 协作设计的。未来会逐渐出现：
 - **17.4 可观测性与成本闸**：每次 LLM 调用 trace；记 prompt 版本 +
   token + 成本；PII 脱敏；per-session 预算；熔断器。
   见 [`docs/observability.zh-CN.md`](./docs/observability.zh-CN.md)。
+- **17.5 机器可读的 vendor 文档**：优先 fetch vendor 的 `.md` 端点
+  （比如 Vercel 的 `/design.md` 和 `/design.dark.md`，或 `llms.txt`
+  索引），不要先抓 HTML；自己是 vendor 时，把自己的 `.md` 发到可预测
+  路径上。见 [`docs/machine-readable-docs.zh-CN.md`](./docs/machine-readable-docs.zh-CN.md)。
 
 ## 十八、平台工程
 

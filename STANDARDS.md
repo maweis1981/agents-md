@@ -494,6 +494,11 @@ Each has a dedicated chapter under `docs/`:
   log prompt version + token + cost, redact PII, set per-session
   budget, run a circuit breaker. See
   [`docs/observability.md`](./docs/observability.md).
+- **17.5 Machine-readable vendor docs.** Prefer fetching a vendor's
+  `.md` endpoint (e.g. Vercel's `/design.md` and `/design.dark.md`,
+  or an `llms.txt` index) over scraping HTML; when you are the
+  vendor, publish your own at predictable paths. See
+  [`docs/machine-readable-docs.md`](./docs/machine-readable-docs.md).
 
 ## 18. Platform engineering
 

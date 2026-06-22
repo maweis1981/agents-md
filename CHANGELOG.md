@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- `docs/machine-readable-docs.md` (+ zh-CN) — new §17.5 in
+  `STANDARDS.md`. Codifies the emerging pattern where vendors
+  publish their docs at predictable `.md` endpoints (e.g. Vercel's
+  [`/design.md`](https://vercel.com/design.md) and
+  [`/design.dark.md`](https://vercel.com/design.dark.md), or the
+  [`llms.txt`](https://llmstxt.org/) proposal). Covers both
+  consumer rules (fetch the `.md` before scraping HTML; pin
+  versions; cache aggressively) and producer rules (expose your own
+  `.md`; keep it in sync with the code; version the URL).
+- `docs/agent-behavior.md` §1 extended with a one-paragraph
+  reference to the new chapter — the "search before generating"
+  rule now applies to external vendor docs as well as internal
+  codebase.
+- `docs/outlook.md` "concrete signals" list gains a bullet for
+  Vercel Geist `/design.md` and the `llms.txt` proposal.
+
 ## [0.2.0] - 2026-06-06
 
 ### Added — AI-specific & platform-engineering chapters

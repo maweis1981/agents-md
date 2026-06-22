@@ -19,6 +19,14 @@ existing:
 
 If a near-match exists, **extend it** rather than create a parallel one.
 
+When the agent needs *external* information — vendor design tokens,
+SDK surface, configuration schema — the same rule applies one level
+out: check whether the vendor publishes a machine-readable Markdown
+endpoint (e.g. Vercel's [`/design.md`](https://vercel.com/design.md)
+and [`/design.dark.md`](https://vercel.com/design.dark.md), or any
+`llms.txt`-style endpoint) before scraping HTML or guessing.
+See [`machine-readable-docs.md`](./machine-readable-docs.md).
+
 Why: AI agents have an extreme bias toward generation. Unchecked, this
 multiplies the maintenance surface forever. A duplicate `useDebounce`,
 duplicate `Button`, duplicate `formatDate`, duplicate auth schema —

@@ -70,6 +70,13 @@ agent.
   Scorecard, and per-repo GitOps policy engines hint at where this
   goes: rules expressed not as "must pass these checks" but as "must
   satisfy this intent" — verifiable by another agent.
+- **Machine-readable vendor docs**. Vercel publishes Geist at
+  [`/design.md`](https://vercel.com/design.md) and
+  [`/design.dark.md`](https://vercel.com/design.dark.md); the
+  [`llms.txt`](https://llmstxt.org/) proposal is converging across
+  doc sites. Agents stop scraping HTML; vendors stop pretending the
+  docs site is the only consumer. See
+  [`machine-readable-docs.md`](./machine-readable-docs.md).
 
 None of these are speculative — every category above has at least one
 shipping product. The speculation is about *which* of them becomes the

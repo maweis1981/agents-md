@@ -58,6 +58,12 @@
 - **Policy-as-code 分支保护**。GitHub Rulesets、OpenSSF Scorecard、
   以及按仓 GitOps policy engine 暗示了走向：规则不再写成
   「必须通过这些 check」，而是「必须满足这个意图」—— 由另一个 Agent 验证。
+- **机器可读的 vendor 文档**。Vercel 在
+  [`/design.md`](https://vercel.com/design.md) 和
+  [`/design.dark.md`](https://vercel.com/design.dark.md) 暴露 Geist；
+  [`llms.txt`](https://llmstxt.org/) 提案在多个文档站之间收敛。
+  Agent 不再抓 HTML；vendor 不再假装文档站是唯一消费者。
+  见 [`machine-readable-docs.zh-CN.md`](./machine-readable-docs.zh-CN.md)。
 
 以上没有一个是空想 —— 每一类都至少有一个在产的产品。真正的猜测在于
 **哪一个**会在 ~24 个月内成为默认。
