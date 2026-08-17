@@ -22,10 +22,28 @@ editing the repo.
 5. **Keep English and Chinese versions in sync.** Files ending in
    `.zh-CN.md` mirror their English counterpart.
 6. **Don't add code / build tooling.** This is a Markdown spec repo.
+7. **Track material work in GitHub Issues.** Start only Ready work,
+   keep Project status truthful, and link the implementation PR.
 
 The full standard is in [`STANDARDS.md`](./STANDARDS.md) (English) and
 [`STANDARDS.zh-CN.md`](./STANDARDS.zh-CN.md) (中文). The summary you
 just read is a subset, not a replacement.
+
+## Issue and Project tracking
+
+- Find or create the canonical Issue before material work. Put it in
+  the repository that owns the primary deliverable.
+- For cross-repository outcomes, use one parent Issue and linked
+  repository-specific sub-issues; do not create unlinked duplicates.
+- Confirm Definition of Ready before implementation. Assign an owner,
+  record blockers, and move Status as reality changes.
+- Link the Pull Request to the Issue. Mark Done only after acceptance
+  criteria, required checks, merges, and dependencies are complete.
+- Do not change Priority, Iteration, Target date, scope, or acceptance
+  criteria when that would create a new commitment without human authority.
+
+Canonical rules are in [section 19 of `STANDARDS.md`](./STANDARDS.md#19-github-issues-and-projects-workflow), with operating examples in
+[`docs/github-issues-projects.md`](./docs/github-issues-projects.md).
 
 ---
 

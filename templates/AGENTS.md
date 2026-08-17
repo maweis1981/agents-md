@@ -20,6 +20,20 @@
    parallel duplicates.
 7. **Cap retries at 3.** Then surface the failure. No infinite loops.
 8. **No polling.** Use events / webhooks / queues.
+9. **Track material work in Issues.** Start only Ready work, keep
+   Project status truthful, and link the implementation PR.
+
+## Issue and Project tracking
+
+- Find or create the canonical Issue in the repository that owns the
+  primary deliverable before material implementation.
+- Use one parent Issue and linked repository-specific sub-issues for
+  cross-repository outcomes; do not create unlinked duplicates.
+- Confirm Definition of Ready, assign ownership, and record dependencies
+  and blockers before starting.
+- Link the Pull Request and mark Done only after Definition of Done is met.
+- Do not change Priority, Iteration, Target date, scope, or acceptance
+  criteria when that creates a new commitment without human authority.
 
 ## Project specifics (edit me)
 
@@ -56,3 +70,4 @@
 
 Full spec: <https://github.com/maweis1981/agents-md/blob/main/STANDARDS.md>.
 中文: <https://github.com/maweis1981/agents-md/blob/main/STANDARDS.zh-CN.md>.
+Workflow: <https://github.com/maweis1981/agents-md/blob/main/docs/github-issues-projects.md>.
