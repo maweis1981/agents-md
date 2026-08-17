@@ -27,6 +27,20 @@ rules below on every change. Hard rules are non-negotiable.
 8. **Cap retries at 3**, with a new hypothesis each time. Then stop
    and surface the failure.
 9. **No polling loops.** Use webhooks / queues / events.
+10. **Track material work in Issues.** Start only Ready work, keep
+    Project status truthful, and link the implementation PR.
+
+## Issue and Project tracking
+
+- Find or create the canonical Issue in the repository that owns the
+  primary deliverable before material implementation.
+- For cross-repository outcomes, use one parent Issue and linked
+  repository-specific sub-issues; declare dependencies explicitly.
+- Confirm Definition of Ready, set ownership, record blockers, and update
+  Status when reality changes.
+- Link the Pull Request and mark Done only after Definition of Done is met.
+- Without human authority, do not create a new commitment by changing
+  Priority, Iteration, Target date, scope, or acceptance criteria.
 
 ## Project specifics (edit me)
 
@@ -57,3 +71,4 @@ migrations, deployments, or anything else with cross-system effects.
 
 Full spec: <https://github.com/maweis1981/agents-md/blob/main/STANDARDS.md>.
 中文: <https://github.com/maweis1981/agents-md/blob/main/STANDARDS.zh-CN.md>.
+Workflow: <https://github.com/maweis1981/agents-md/blob/main/docs/github-issues-projects.md>.

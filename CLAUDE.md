@@ -91,5 +91,23 @@ follow them when editing it.
 8. **Search before generating; reuse before creating.**
 9. **Cap retries; never loop forever.**
 10. **Event-driven, scale-to-zero.**
+11. **Track material work in Issues.** Start only Ready work, keep
+    Project status truthful, and link every implementation PR.
+
+## Issue and Project tracking
+
+- Find or create the canonical Issue in the repository that owns the
+  primary deliverable before material implementation.
+- Use a parent Issue plus repository-specific sub-issues for
+  cross-repository outcomes; declare dependencies explicitly.
+- Confirm Definition of Ready, set ownership, record blockers, and update
+  Status when reality changes.
+- Mark Done only after acceptance criteria, required checks, merges, and
+  dependencies satisfy Definition of Done.
+- Without human authority, do not create a new commitment by changing
+  Priority, Iteration, Target date, scope, or acceptance criteria.
+
+See [section 19 of `STANDARDS.md`](./STANDARDS.md#19-github-issues-and-projects-workflow) and
+[`docs/github-issues-projects.md`](./docs/github-issues-projects.md).
 
 The canonical wording lives in [`STANDARDS.md`](./STANDARDS.md).

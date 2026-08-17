@@ -16,6 +16,7 @@ available in English and 简体中文.
 | Topic | English | 中文 |
 | --- | --- | --- |
 | Standard workflow | [`workflow.md`](./workflow.md) | [`workflow.zh-CN.md`](./workflow.zh-CN.md) |
+| GitHub Issues & Projects | [`github-issues-projects.md`](./github-issues-projects.md) | [`github-issues-projects.zh-CN.md`](./github-issues-projects.zh-CN.md) |
 | Branching | [`branching.md`](./branching.md) | [`branching.zh-CN.md`](./branching.zh-CN.md) |
 | Commits | [`commits.md`](./commits.md) | [`commits.zh-CN.md`](./commits.zh-CN.md) |
 | Push | [`push.md`](./push.md) | [`push.zh-CN.md`](./push.zh-CN.md) |
