@@ -25,6 +25,8 @@ AI Agent 生成代码的速度，远远超出了 Git 被设计时所考虑的人
 `agents-md` 是 **AI 编程时代与传统 Git 工作流之间的兼容层**。
 它把团队需要的规则固化下来，让 AI 在 *本地* 高速迭代的同时，
 *系统层面* 仍然保持低震荡、生产可控。
+它同时定义 GitHub Issues 与 Projects 的 Backlog-to-Kanban 工作流，包括
+多仓库归属和适用于代理的安全计划权限边界。
 
 ## 仓库结构
 
@@ -78,7 +80,7 @@ git submodule add https://github.com/maweis1981/agents-md docs/agents-md
 配套的 [`templates/.commitlintrc.json`](./templates/.commitlintrc.json)
 让已经在用 Husky + `@commitlint/cli` 的项目可以一键启用相同规则集。
 
-## 十条核心规则速览
+## 核心规则速览
 
 1. **AI 可以高频修改 —— 但必须低频提交。**
 2. **Agent 永远不能直接 push `main`。** 一律走 `ai/<feature>` 分支。
@@ -90,8 +92,12 @@ git submodule add https://github.com/maweis1981/agents-md docs/agents-md
 8. **生成之前先搜索。** 复用已有 component / util / schema / prompt。
 9. **禁止无限 retry。** 设置上限、抛出失败、请求人工介入。
 10. **事件驱动，禁止 polling。** 默认 scale-to-zero。
+11. **Issue 是工作记录。** 只开始 Ready 工作，保持 Project 状态真实，
+    关联 PR，新的交付承诺必须获得人工授权。
 
 完整规则、动机与示例见 [`STANDARDS.zh-CN.md`](./STANDARDS.zh-CN.md)。
+GitHub 操作工作流见
+[`docs/github-issues-projects.zh-CN.md`](./docs/github-issues-projects.zh-CN.md)。
 
 ## 状态
 

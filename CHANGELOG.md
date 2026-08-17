@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `docs/github-issues-projects.md` (+ zh-CN) — a platform-neutral
+  Backlog and Kanban workflow for GitHub Issues and Projects, including
+  multi-repository parent/sub-issue ownership, structured fields,
+  definitions of Ready and Done, WIP limits, iterations, and automation.
+- `STANDARDS.md` §19 (+ zh-CN) — canonical lifecycle and agent-authority
+  rules for issue-based work tracking.
+- Root and distributable `AGENTS.md` / `CLAUDE.md` entry points now require
+  canonical Issues, linked PRs, truthful status, and human authorization
+  for new planning commitments.
 - `docs/machine-readable-docs.md` (+ zh-CN) — new §17.5 in
   `STANDARDS.md`. Codifies the emerging pattern where vendors
   publish their docs at predictable `.md` endpoints (e.g. Vercel's

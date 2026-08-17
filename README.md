@@ -26,6 +26,8 @@ Naively wiring an agent into Git produces:
 `agents-md` is a **compatibility layer between AI coding and traditional
 Git workflows**. It encodes the rules a team needs so that AI can iterate
 fast *locally* while the *system* remains low-churn and production-safe.
+It also defines a Backlog-to-Kanban workflow for GitHub Issues and Projects,
+including multi-repository ownership and safe planning boundaries for agents.
 
 ## What's inside
 
@@ -84,7 +86,7 @@ companion [`templates/.commitlintrc.json`](./templates/.commitlintrc.json)
 configures `@commitlint/cli` with the same ruleset for projects that
 already run commitlint via Husky.
 
-## The ten rules at a glance
+## The core rules at a glance
 
 1. **AI may modify frequently — but must commit infrequently.**
 2. **Never let an agent push directly to `main`.** Use `ai/<feature>` branches.
@@ -96,9 +98,12 @@ already run commitlint via Husky.
 8. **Search before generating.** Reuse existing components, utils, schemas, prompts.
 9. **No infinite retry loops.** Cap retries, surface failure, ask a human.
 10. **Event-driven, not polling.** Scale-to-zero is the default posture.
+11. **Issues are the work record.** Start only Ready work, keep Project
+    status truthful, link PRs, and require human authority for new commitments.
 
 The full ruleset, including rationale and examples, lives in
-[`STANDARDS.md`](./STANDARDS.md).
+[`STANDARDS.md`](./STANDARDS.md). The operational GitHub workflow is available
+in [`docs/github-issues-projects.md`](./docs/github-issues-projects.md).
 
 ## Status
 
