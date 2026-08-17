@@ -515,3 +515,95 @@ Each has a dedicated chapter under `docs/`:
   redefine Lead Time and Deployment Frequency to match AI cadence;
   split AI-authored from human-authored series. See
   [`docs/dora.md`](./docs/dora.md).
+
+## 19. GitHub Issues and Projects workflow
+
+GitHub Issues are the authoritative records for planned development work.
+GitHub Projects provide planning metadata and views over those Issues; Pull
+Requests provide implementation and review evidence. The same status,
+priority, iteration, or scope decision MUST NOT be maintained in competing
+locations.
+
+### 19.1 Tracking and ownership
+
+- An agent MUST find or create an Issue before material implementation work.
+- The Issue MUST live in the repository that owns the primary deliverable.
+- An agent MUST search for an existing Issue and MUST NOT create unlinked
+  duplicates merely for board visibility.
+- Cross-repository outcomes MUST use one parent Issue and repository-specific
+  sub-issues. Dependencies MUST be explicit.
+- Each implementation Pull Request MUST link to its Issue under the existing
+  Pull Request and merge rules in this standard.
+
+### 19.2 Fields and lifecycle
+
+Use Project fields for structured values that are filtered, grouped, reported,
+or automated. The recommended minimum is Status, Priority, Size or Estimate,
+Iteration, and Area. A Target date MAY be added for a real deadline. Labels
+MUST NOT duplicate those fields.
+
+The baseline lifecycle is:
+
+```text
+Backlog -> Ready -> In Progress -> In Review -> Done
+```
+
+Teams MAY rename states but MUST preserve these meanings:
+
+- **Backlog:** retained but uncommitted work.
+- **Ready:** actionable, prioritized, owned, and unblocked work that satisfies
+  Definition of Ready.
+- **In Progress:** work actively owned and being implemented.
+- **In Review:** reviewable implementation awaiting required review, checks,
+  or acceptance.
+- **Done:** work satisfying Definition of Done, including required merge and
+  dependency completion.
+
+Status MUST reflect current reality. Blockers MUST identify the blocker,
+responsible party, and next review point; blocked work MUST NOT be hidden by
+moving it to Backlog. Teams SHOULD set explicit WIP limits for In Progress and
+In Review and SHOULD finish or unblock existing work before starting more.
+
+### 19.3 Ready, Done, and iterations
+
+Ready requires a clear outcome, observable acceptance criteria, known
+ownership, identified dependencies, relevant security and rollout
+considerations, an actionable size, authorized Priority, and no unresolved
+scope contradiction. An underspecified Backlog item is not authorization to
+invent product behavior.
+
+Done requires satisfied acceptance criteria; completed code, tests,
+documentation, migrations, and safeguards where applicable; passed checks and
+reviews; the required merge or documented equivalent; resolved required
+sub-issues and dependencies; and verifiable completion evidence in the Issue.
+Cancelled or superseded work MUST be recorded as such, not as delivered.
+
+Iterations are commitment windows, not Backlog containers. Only Ready work
+SHOULD enter an Iteration. Incomplete work MUST be reviewed before it is moved
+forward; scope, priority, estimate, risk, and ownership must be reconfirmed.
+
+### 19.4 Automation and agent authority
+
+Automation MAY add matching Issues, initialize Backlog status, mirror observed
+Pull Request progress, and archive old Done items. It MUST NOT invent or assign
+Priority, Iteration, Target date, acceptance criteria, or product scope without
+an authorized policy. Automated transitions SHOULD be reversible and
+auditable.
+
+An agent MAY make clerical updates that reflect verified reality: add the
+Issue to a Project, set ownership, link evidence, update Status, and record or
+clear a blocker. Without explicit authority, an agent MUST NOT:
+
+- create a new product or delivery commitment by changing Priority, Iteration,
+  Target date, scope, or acceptance criteria;
+- remove required cross-repository work;
+- mark work Done before all completion conditions are met;
+- close unresolved work to improve metrics; or
+- infer approval from silence, assignment, or automation.
+
+When Issue content, fields, and repository state conflict, the agent MUST
+preserve evidence, identify the contradiction, and request a human decision.
+
+For complete operating checklists, neutral multi-repository examples,
+recommended views, and planning cadence, see
+[`docs/github-issues-projects.md`](./docs/github-issues-projects.md).

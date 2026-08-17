@@ -471,3 +471,85 @@ Git 本身并不是为 AI Agent 协作设计的。未来会逐渐出现：
 - **18.4 AI 修正版 DORA**：保留四个 DORA 指标；按 AI 节奏重定义
   Lead Time 和 Deployment Frequency；AI 作者与人类作者分线跟踪。
   见 [`docs/dora.zh-CN.md`](./docs/dora.zh-CN.md)。
+
+## 十九、GitHub Issues 与 Projects 工作流
+
+GitHub Issues 是已计划开发工作的权威记录。GitHub Projects 提供基于
+Issue 的计划元数据与视图；Pull Request 提供实施与评审证据。不得在
+多个相互竞争的位置维护同一状态、优先级、迭代或范围决策。
+
+### 19.1 追踪与归属
+
+- 代理在进行实质性实施工作前必须查找或创建 Issue。
+- Issue 必须位于主要交付物所属的仓库。
+- 代理必须先搜索已有 Issue，不得仅为了看板可见性创建未关联的重复
+  Issue。
+- 跨仓库结果必须使用一个父 Issue 和各仓库专属的子 Issue，依赖关系
+  必须明确。
+- 每个实施 Pull Request 都必须关联其 Issue，并遵循本标准已有的 Pull
+  Request 与合并规则。
+
+### 19.2 字段与生命周期
+
+需要筛选、分组、报告或自动化的结构化值应使用 Project 字段。推荐的
+最低配置为 Status、Priority、Size 或 Estimate、Iteration 和 Area；真实
+截止日期可以增加 Target date。标签不得重复这些字段。
+
+基础生命周期是：
+
+```text
+Backlog -> Ready -> In Progress -> In Review -> Done
+```
+
+团队可以重命名状态，但必须保留以下含义：
+
+- **Backlog：** 保留但尚未承诺的工作。
+- **Ready：** 满足 Definition of Ready、可执行、已排优先级、已有归属且
+  无阻塞的工作。
+- **In Progress：** 已由明确负责人积极实施的工作。
+- **In Review：** 可评审的实施正在等待必要评审、检查或验收。
+- **Done：** 满足 Definition of Done，包括完成所需合并与依赖的工作。
+
+Status 必须反映当前事实。阻塞记录必须指出阻塞项、责任方和下次检查点；
+不得通过把被阻塞工作移至 Backlog 来隐藏它。团队应该为 In Progress 和
+In Review 设置明确的 WIP 限制，并应该先完成或解除现有工作的阻塞，再
+开始更多工作。
+
+### 19.3 Ready、Done 与迭代
+
+Ready 要求：结果清晰、验收标准可观察、归属已知、依赖已识别、已考虑
+相关安全与发布事项、规模可执行、Priority 已获授权且不存在未解决的范围
+矛盾。描述不足的 Backlog 条目不构成擅自发明产品行为的授权。
+
+Done 要求：满足验收标准；按需完成代码、测试、文档、迁移和保障措施；
+通过检查与评审；完成所需合并或仓库规定的等价流程；解决必需的子 Issue
+与依赖；并在 Issue 中留下可验证的完成证据。取消或被取代的工作必须如实
+记录，不得呈现为已经交付。
+
+Iteration 是承诺窗口，不是 Backlog 容器。只有 Ready 工作应该进入
+Iteration。未完成工作移入下一迭代前必须经过评审，并重新确认范围、
+优先级、估算、风险与负责人。
+
+### 19.4 自动化与代理权限
+
+自动化可以加入符合条件的 Issue、初始化 Backlog 状态、同步已观察到的
+Pull Request 进展，以及归档旧的 Done 条目。未经获授权策略提供决策，
+自动化不得发明或分配 Priority、Iteration、Target date、验收标准或产品
+范围。自动转换应该可逆且可审计。
+
+代理可以执行反映已验证事实的事务性更新：将 Issue 加入 Project、设置
+负责人、关联证据、更新 Status，以及记录或清除阻塞。未经明确授权，代理
+不得：
+
+- 通过修改 Priority、Iteration、Target date、范围或验收标准形成新的
+  产品或交付承诺；
+- 移除必需的跨仓库工作；
+- 在满足全部完成条件前将工作标记为 Done；
+- 为改善指标而关闭未解决工作；
+- 将沉默、任务指派或自动化推断为批准。
+
+当 Issue 内容、字段与仓库事实冲突时，代理必须保留证据、指出矛盾并请求
+人工决策。
+
+完整操作检查清单、中立的多仓库示例、推荐视图与计划节奏见
+[`docs/github-issues-projects.zh-CN.md`](./docs/github-issues-projects.zh-CN.md)。
