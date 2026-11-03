@@ -1,0 +1,78 @@
+# launch.yaml — the product's single source of truth for the launch stack.
+# See docs/launch-stack.md. Skills read this file, create only what is
+# missing, and write the ids they create back here. Ids are not secrets;
+# credentials never go in this file.
+#
+# Unknown values: leave `TODO(owner): <what and where in which console>`.
+
+version: 1
+
+product:
+  name: Example                    # display name
+  slug: example                    # lowercase id, used for project and stream names
+  domain: example.com              # apex domain; app-ads.txt lives at its root
+  locales: [en]                    # site and store locales, source first
+  timezone: Etc/UTC                # GA4 reporting time zone
+  currency: USD                    # GA4 reporting currency
+
+surfaces:
+  web:
+    stack: jekyll                  # jekyll | nextjs | astro | other
+    host: github-pages             # github-pages | cloudflare-pages | vercel | other
+    repo: owner/example-site
+  ios:
+    bundle_id: com.example.app
+    asc_app_id: null               # App Store Connect numeric id, after the app record exists
+    team_id: null
+  android:
+    package: com.example.app
+    # play: the app must exist in Play Console before products can be created
+
+google:
+  gcp_project: null                # e.g. example-prod; created by the owner without a Cloud org
+  ga4:
+    account: null                  # accounts/123
+    property: null                 # properties/456
+    streams:
+      web: null                    # dataStreams/…, measurement id G-…
+      ios: null                    # created by the Firebase link
+      android: null
+    bigquery_export: false
+  firebase:
+    project: null                  # same as gcp_project
+    ios_app: null                  # 1:…:ios:…
+    android_app: null              # 1:…:android:…
+  gtm:
+    web_container: null            # GTM-XXXXXXX
+  gsc:
+    site: null                     # https://example.com/ or sc-domain:example.com
+
+ads:
+  admob:
+    publisher: null                # pub-…; one app-ads.txt line covers every app
+    ios_app: null                  # ca-app-pub-…~…
+    android_app: null
+    units:
+      ios_banner: null             # ca-app-pub-…/…
+      android_banner: null
+  live: false                      # mirrors the apps' AdsConfig flag
+
+monetization:
+  live: false                      # mirrors the apps' MonetizationConfig flag
+  products:
+    - id: com.example.app.lifetime
+      kind: non_consumable         # non_consumable | subscription
+      price_usd: 9.99
+
+conversions:
+  # The canonical funnel (launch-analytics). `import` marks the conversions
+  # sent to ad platforms; keep it to these three.
+  first_open:  { import: true }
+  activation:  { event: null, import: true }   # the product's first valuable action
+  purchase:    { value: true, currency: true, import: true }
+  ad_revenue:  { event: ad_impression, value: true, import: false }
+
+attribution:
+  skadnetwork_scheme: v1           # low bit = activation, higher bits = revenue bucket
+  apple_search_ads: false
+  google_ads_customer: null        # 123-456-7890

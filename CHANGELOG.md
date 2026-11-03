@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Launch stack: `docs/launch-stack.md` and `docs/launch-credentials.md`
+  (+ zh-CN), `templates/launch.yaml`, and the first skills
+  `launch-manifest`, `launch-google-stack` and `launch-analytics` — one
+  manifest and repeatable steps to stand up a product's website search,
+  GA4/Firebase, GTM, stores, ads and attribution (#8).
 - `docs/github-issues-projects.md` (+ zh-CN) — a platform-neutral
   Backlog and Kanban workflow for GitHub Issues and Projects, including
   multi-repository parent/sub-issue ownership, structured fields,

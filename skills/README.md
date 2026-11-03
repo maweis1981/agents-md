@@ -18,6 +18,13 @@ convention) will autoload a skill when the conditions in its
 | [`ai-native-ci-cd`](./ai-native-ci-cd/) | An agent is editing GitHub Actions or any CI workflow file. |
 | [`ai-native-database`](./ai-native-database/) | An agent is editing schema, migrations, or DB connection code. |
 | [`ai-native-agent-behavior`](./ai-native-agent-behavior/) | Any time the agent is about to generate new code. |
+| [`launch-manifest`](./launch-manifest/) | A product needs its `launch.yaml` created or validated before launch-stack work. |
+| [`launch-google-stack`](./launch-google-stack/) | GCP, Firebase, GA4 streams, GTM web or Search Console need creating or repairing. |
+| [`launch-analytics`](./launch-analytics/) | Analytics events are added, renamed or reviewed on web, iOS or Android. |
+
+The `launch-*` skills set up the services around a product (see
+[`docs/launch-stack.md`](../docs/launch-stack.md)); they need the one-time
+[launch credentials](../docs/launch-credentials.md).
 
 ## Install
 
