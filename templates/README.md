@@ -14,6 +14,7 @@ Drop-in files for downstream projects that want to adopt the
 | [`.commitlintrc.json`](./.commitlintrc.json) | Repo root | `@commitlint/cli` config enforcing the agents-md commit rules. |
 | [`CODEOWNERS`](./CODEOWNERS) | Repo root (or `.github/CODEOWNERS`) | Routes review to the right team for high-blast-radius paths. |
 | [`claude-settings.json`](./claude-settings.json) | `.claude/settings.json` | Claude Code project settings template (illustrative — verify syntax with your Claude Code version). |
+| [`launch.yaml`](./launch.yaml) | Repo root | The product manifest for the launch stack (`docs/launch-stack.md`). |
 
 ## Quick install
 

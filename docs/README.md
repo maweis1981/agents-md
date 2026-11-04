@@ -56,6 +56,14 @@ available in English and 简体中文.
 | Observability & cost guardrails | [`observability.md`](./observability.md) | [`observability.zh-CN.md`](./observability.zh-CN.md) |
 | Machine-readable vendor docs | [`machine-readable-docs.md`](./machine-readable-docs.md) | [`machine-readable-docs.zh-CN.md`](./machine-readable-docs.zh-CN.md) |
 
+## Product launch
+
+| Topic | English | 中文 |
+| --- | --- | --- |
+| Launch stack (web, analytics, stores, ads, attribution) | [`launch-stack.md`](./launch-stack.md) | [`launch-stack.zh-CN.md`](./launch-stack.zh-CN.md) |
+| Launch credentials (one-time setup) | [`launch-credentials.md`](./launch-credentials.md) | [`launch-credentials.zh-CN.md`](./launch-credentials.zh-CN.md) |
+| Launch runbook (step by step, with scripts) | [`launch-runbook.md`](./launch-runbook.md) | [`launch-runbook.zh-CN.md`](./launch-runbook.zh-CN.md) |
+
 ## Platform engineering
 
 | Topic | English | 中文 |

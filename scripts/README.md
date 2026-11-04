@@ -11,6 +11,16 @@ for downstream projects.
 | [`check-bilingual.sh`](./check-bilingual.sh) | Every English doc has a matching `*.zh-CN.md` (and vice versa). |
 | [`check-links.sh`](./check-links.sh) | Every relative `*.md` link in the repo resolves. |
 
+## Launch setup (run in Cloud Shell, not in CI)
+
+| Script | What it does |
+| --- | --- |
+| [`launch/setup-growth-ops.sh`](./launch/setup-growth-ops.sh) | Once: the `growth-ops` project, its APIs and the `launch-agent` service account (optional key). |
+| [`launch/bootstrap-product.sh`](./launch/bootstrap-product.sh) | Per product: GCP project, Firebase linked to one GA4 property, iOS/Android apps and config files, web stream, key events, custom dimensions. |
+
+Both are idempotent and follow [`docs/launch-runbook.md`](../docs/launch-runbook.md).
+They call Google APIs as the signed-in owner; they are not linters.
+
 ## Run them all
 
 ```bash
