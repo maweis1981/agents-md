@@ -17,6 +17,8 @@ account for every Google API. Nothing else runs in that project.
 Apple and the ad networks do not accept Google identities, so they get their
 own keys (below).
 
+Step by step, with scripts that do the Google part: [launch runbook](./launch-runbook.md).
+
 ## Grants
 
 | Where | Grant | Why |

@@ -15,7 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (+ zh-CN), `templates/launch.yaml`, and the first skills
   `launch-manifest`, `launch-google-stack` and `launch-analytics` — one
   manifest and repeatable steps to stand up a product's website search,
-  GA4/Firebase, GTM, stores, ads and attribution (#8).
+  GA4/Firebase, GTM, stores, ads and attribution (#8). `docs/launch-runbook.md`
+  (+ zh-CN) and `scripts/launch/{setup-growth-ops,bootstrap-product}.sh` do
+  the one-time identity and the per-product Google setup from Cloud Shell.
 - `docs/github-issues-projects.md` (+ zh-CN) — a platform-neutral
   Backlog and Kanban workflow for GitHub Issues and Projects, including
   multi-repository parent/sub-issue ownership, structured fields,

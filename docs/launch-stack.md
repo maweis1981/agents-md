@@ -113,8 +113,8 @@ These are rules, not suggestions:
 
 ## Rollout
 
-1. The owner sets up the growth-ops identity once
-   ([launch credentials](./launch-credentials.md)).
+1. The owner sets up the growth-ops identity once and bootstraps the first
+   product ([launch runbook](./launch-runbook.md), with scripts).
 2. Pilot the first batch on an existing product and fix what breaks.
 3. Extract the remaining skills from that product's working code.
 4. Run the whole set end to end on the next new product.

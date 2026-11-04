@@ -19,6 +19,14 @@ Credentials: `docs/launch-credentials.md`.
 3. Print the service-account email (never the key) and the plan: which
    steps will create something and which are already done.
 
+## Owner-run shortcut
+
+Without a Cloud organization the service account cannot create projects. The
+owner then runs `scripts/launch/bootstrap-product.sh` in Cloud Shell
+(`docs/launch-runbook.md`), which does steps 1–5 and the GA4 parts of step 7
+as the owner. Afterwards, re-run this skill: it finds those resources, writes
+their ids, and continues with GTM, BigQuery and Search Console.
+
 ## Rules
 
 - **One GA4 property per product**, holding all its streams. Never let
@@ -69,7 +77,7 @@ Credentials: `docs/launch-credentials.md`.
   `https://<domain>`; otherwise `dataStreams.create`.
 - Enhanced measurement on; page views from the GTM Google tag (step 6).
 
-### 5. Key events and dimensions
+### 5. Key events and dimensions (bootstrap script also does this)
 
 - `keyEvents.create` for `first_open`, `conversions.activation.event`,
   `purchase` (`ONCE_PER_EVENT`). `in_app_purchase` and `ad_impression`
