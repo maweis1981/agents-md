@@ -56,6 +56,12 @@ available in English and 简体中文.
 | Observability & cost guardrails | [`observability.md`](./observability.md) | [`observability.zh-CN.md`](./observability.zh-CN.md) |
 | Machine-readable vendor docs | [`machine-readable-docs.md`](./machine-readable-docs.md) | [`machine-readable-docs.zh-CN.md`](./machine-readable-docs.zh-CN.md) |
 
+## Orchestration (multi-agent)
+
+| Topic | English | 中文 |
+| --- | --- | --- |
+| Agent teams (Chief of Staff / Executor / Judge) | [`agent-teams.md`](./agent-teams.md) | [`agent-teams.zh-CN.md`](./agent-teams.zh-CN.md) |
+
 ## Platform engineering
 
 | Topic | English | 中文 |

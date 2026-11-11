@@ -100,6 +100,52 @@ PR eval 挂了，团队第一反应想降阈值时，**停下**。正确顺序�
 4. 修 prompt、修数据集，或者**最后一步** —— 调阈值，
    **同时在 PR 描述里写明理由**。
 
+## 跨模型 Judge（Agent 团队运行必需）
+
+当 **LLM-as-judge** 给 Executor 输出打分时（见
+[`agent-teams.zh-CN.md`](./agent-teams.zh-CN.md)），Judge 必须：
+
+- **用和 Executor 不同的模型家族**。Executor Claude Sonnet →
+  Judge GPT-5 / Gemini / 开源权重。
+- **Eval 成本允许时优先跨厂商**。减少共享训练偏见。
+- **只接收 rubric + Executor 输出。** 不给原任务 prompt、不给
+  plan、不给 Executor 自述。**上下文偏见是 LLM-as-judge 假阳性的
+  头号原因**：Judge 会把 Executor 产出的任何东西合理化成"满足任务"。
+- **返回 pass/fail + 分数 + 理由。** 不修改输出。
+
+### 两票仲裁
+
+单 Judge 便宜但常错时，**两个不同厂商 Judge + 多数票**胜过单个强 Judge。
+成本 ~2×，但假阳性下降 ~5-10×（按运行 Lauren Tan / `pstack` 模式的
+团队内部报告）。
+
+```
+Executor:   Claude Sonnet 4.5
+Judge 1:    GPT-5
+Judge 2:    Gemini 2.5 Pro
+结果:        2/2 pass → 接受
+            1/2 pass → 请第三个 judge 或人
+            0/2 pass → 驳回 + 重 prompt
+```
+
+### Judge prompt 骨架
+
+Judge prompt 应该字面就是：
+
+```
+You are scoring the following output against the following rubric.
+You will NOT be given the original task.
+Return JSON: { "pass": bool, "score": 0..1, "rationale": "..." }
+
+RUBRIC:
+<rubric 正文>
+
+OUTPUT:
+<Executor 输出正文>
+```
+
+**保持短**。Judge 的工作是打分，不是帮忙。
+
 ## 值得知道的工具
 
 - [Inspect](https://inspect.aisi.org.uk/)（UK AI Safety Institute）——
