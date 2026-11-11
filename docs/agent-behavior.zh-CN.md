@@ -87,7 +87,58 @@ Agent 放弃任务时必须明说。禁止：
 
 完不成，就说**完不成、以及为什么**。
 
-## 6. 生成 CI / DB / infra 代码时也要遵守规范
+## 6. Rule-baking flywheel（规则沉淀飞轮）
+
+你的 Agent（或 Agent 团队 ——
+见 [`agent-teams.zh-CN.md`](./agent-teams.zh-CN.md)）检测到反复出现
+的失败时，正确做法**不是**写更长的 prompt，而是**把失败转化为无需
+LLM 调用就能跑的 check**。
+
+循环：
+
+```
+Judge / 人类第二次抓到同一个错
+        ↓
+能用静态检查抓吗？
+   能 → 加到 scripts/lint-*.sh
+   不能 ↓
+能用 eval case 抓吗？
+   能 → 加到 evals/<name>/dataset.jsonl
+   不能 ↓
+加一个专职 Reviewer skill：skills/review-<topic>/SKILL.md
+```
+
+为什么是这个升级顺序：
+
+- 静态 lint 毫秒级跑完、零成本、不 flaky。
+- Eval case 在 CI 里跑，抓非静态回归，几分钱。
+- Reviewer skill 每个 PR 跑一次，抓前两层抓不到的，代价是一次 LLM
+  调用。
+
+**只活在 system prompt 里的规则是最弱的强制形式** —— Agent 看得到，
+Agent 有时就是无视它，你没任何记录。**把规则从 prompt 里烘出去**，
+沉到下面几层。
+
+### 该沉淀的信号
+
+- 同一个 reviewer 评论连续出现在 3 个 PR → lint。
+- 同一个 eval 回归跨多个 prompt 版本 → dataset case。
+- session 日志里反复出现"Agent 不知道 X" → Reviewer skill。
+- 人类在 Slack 里反复说同一句话给 Agent → 静态 check。
+
+### **不**该沉淀的
+
+- 一次性情境指导（"本季度优先用 X 模式"）。沉淀会变的政策只会增加阻力。
+- 多租户共享规范里只适用于一个项目的偏好。
+- 没法表达成假阳性率 <10% 的确定性 check 的东西。
+
+### Flywheel 的目的
+
+Agent 变聪明靠的是**减少自由度**，不是更长 prompt。每条规则烘到
+prompt 之下，下一次 Agent 运行就少一个可能做错的东西。
+**规范就是 prompt 自身没有的长期记忆。**
+
+## 7. 生成 CI / DB / infra 代码时也要遵守规范
 
 Agent 自身写的：
 

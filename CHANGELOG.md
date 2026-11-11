@@ -11,6 +11,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `docs/agent-teams.md` (+ zh-CN) — new `STANDARDS.md` §20. Codifies
+  the orchestration pattern now shipping in the wild (Lauren Tan /
+  Cursor 2.0 / Grok Build / Claude Code worktrees): Chief of Staff
+  plans and aggregates, Executors work in isolated `git worktree`s,
+  Judges score against a pre-written rubric using a different model
+  family. Covers the 5-layer validation stack
+  (lint → unit → eval → cross-model judge → human meta-gate), when
+  NOT to go parallel, worktree lifecycle, anti-patterns, and a
+  minimum manual implementation that needs no orchestration
+  framework.
+- `docs/evals.md` (+ zh-CN) — new "Cross-model judge" section:
+  different model family than the Executor; different vendor when
+  cost allows; judge receives only rubric + output (never the task);
+  two-vote quorum beats single strong judge on
+  disagreement-cheap tasks; Judge prompt skeleton.
+- `docs/agent-behavior.md` (+ zh-CN) §6 Rule-baking flywheel —
+  recurring failures must escalate out of the prompt into
+  `scripts/lint-*.sh`, then into `evals/<name>/dataset.jsonl`, then
+  into dedicated Reviewer skills. The spec is the long-term memory
+  the prompt doesn't have.
+- `STANDARDS.md` §20 (+ zh-CN) — pointer-index for the agent-teams
+  chapter, with the three-role contract summarized inline per the
+  canonical-source rule.
+- `STANDARDS.md` §17.3 (+ zh-CN) — cross-ref to the new cross-model
+  judge section.
+- `docs/README.md` — new "Orchestration (multi-agent)" section.
+
+### Added
+
 - `docs/github-issues-projects.md` (+ zh-CN) — a platform-neutral
   Backlog and Kanban workflow for GitHub Issues and Projects, including
   multi-repository parent/sub-issue ownership, structured fields,

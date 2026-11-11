@@ -99,7 +99,63 @@ If an agent gives up on a task, it must say so. Forbidden:
 
 If you cannot finish, **say you couldn't finish, and why**.
 
-## 6. Respect the spec when generating CI / DB / infra code
+## 6. Rule-baking flywheel
+
+When your agent (or agent team — see
+[`agent-teams.md`](./agent-teams.md)) detects a recurring failure,
+the response is **not** to write a longer prompt. The response is
+to turn the failure into a check that runs without an LLM call.
+
+The loop:
+
+```
+Judge / human catches the same mistake twice
+        ↓
+Can it be caught statically?
+   yes → add to scripts/lint-*.sh
+    no ↓
+Can it be caught by an eval case?
+   yes → add to evals/<name>/dataset.jsonl
+    no ↓
+Add a dedicated Reviewer skill in skills/review-<topic>/SKILL.md
+```
+
+Why this specific escalation order:
+
+- Static lint runs in milliseconds, costs nothing, never flakes.
+- Eval cases run in CI, catch non-static regressions, cost pennies.
+- Reviewer skills run per-PR and catch what the first two can't,
+  at the cost of an LLM call.
+
+A rule that lives only in a system prompt is the *weakest* form of
+enforcement — the agent sees it, the agent sometimes ignores it,
+and you have no record of why. Bake rules *out of* the prompt and
+into the layers below.
+
+### Signs a rule should be baked
+
+- Same reviewer comment on three PRs → lint.
+- Same eval regression across prompt versions → dataset case.
+- Same "agent didn't know X" in session logs → Reviewer skill.
+- Same human Slack message to the agent → static check.
+
+### What NOT to bake
+
+- One-off situational guidance ("this quarter, prefer pattern X").
+  Baking policy that will change creates drag.
+- Preferences that only apply to one project in a multi-tenant
+  shared spec.
+- Anything you can't articulate as a deterministic check with
+  <10% false-positive rate.
+
+### The flywheel's purpose
+
+The agent gets smarter by **removing degrees of freedom**, not by
+longer prompts. Every rule baked below the prompt line means one
+less thing the next agent run can get wrong. The spec is the
+long-term memory the prompt doesn't have.
+
+## 7. Respect the spec when generating CI / DB / infra code
 
 When the agent itself writes:
 

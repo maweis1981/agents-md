@@ -488,8 +488,10 @@ Each has a dedicated chapter under `docs/`:
 - **17.2 Prompts as code.** Versioned, reviewed, paired with evals,
   no inline > 10 lines. See [`docs/prompts.md`](./docs/prompts.md).
 - **17.3 Evals for AI features.** Every prompt has a suite; PRs run
-  it; regressions block merge; thresholds in repo. See
-  [`docs/evals.md`](./docs/evals.md).
+  it; regressions block merge; thresholds in repo. **When used as an
+  LLM-as-judge, the judge model must come from a different family
+  than the output it scores** — see the "Cross-model judge" section
+  of `docs/evals.md`. See [`docs/evals.md`](./docs/evals.md).
 - **17.4 Observability & cost guardrails.** Trace every LLM call,
   log prompt version + token + cost, redact PII, set per-session
   budget, run a circuit breaker. See
@@ -607,3 +609,72 @@ preserve evidence, identify the contradiction, and request a human decision.
 For complete operating checklists, neutral multi-repository examples,
 recommended views, and planning cadence, see
 [`docs/github-issues-projects.md`](./docs/github-issues-projects.md).
+
+---
+
+## 20. Agent teams (orchestrated multi-agent runs)
+
+Sections 1–19 describe a single agent. When you run multiple agents
+in parallel (Lauren Tan / Cursor 2.0 / Grok Build / Claude Code
+worktrees pattern), new failure modes appear that single-agent rules
+don't cover. This section sets the orchestration contract.
+
+### 20.1 Three mandatory roles
+
+Every multi-agent run has:
+
+- **Chief of Staff** — plans, assigns, monitors, aggregates. Does
+  NOT write code.
+- **Executor(s)** — do the work in their own isolated worktree /
+  container. One task per Executor.
+- **Judge(s)** — score Executor output against a pre-written
+  rubric. Different model family from the Executor.
+
+Flat "N equal agents sharing files" is forbidden.
+
+### 20.2 Isolated workspaces
+
+Each Executor runs in its own `git worktree` (or container / remote
+VM). Agents MUST NOT share a working directory. Chief of Staff
+aggregates Executor patches via `git format-patch`, not by having
+Executors commit to a shared branch.
+
+### 20.3 Cross-model judge
+
+A Judge uses a different model family than the Executor it judges;
+different vendor preferred when eval cost allows. Two-vote quorum
+from different vendors beats a single strong Judge on disagreement-
+cheap tasks. The Judge sees only the rubric and the output —
+never the original task prompt, plan, or Executor self-report.
+
+See §17.3 for the full cross-model judge contract.
+
+### 20.4 Budget cap on Chief of Staff
+
+Chief of Staff MUST have a hard budget cap (tokens + dollars + wall
+time). On exceed: halt the whole fleet, surface to human. An
+uncapped orchestrator burns through a quota in minutes.
+
+### 20.5 Human reviews the aggregate
+
+Human review happens on the aggregated Chief-of-Staff PR, not on
+each Executor's intermediate branch. The Judge is how volume
+scales; human review is the meta-gate. Executors MUST NOT open
+their own PRs to `main`.
+
+### 20.6 When not to use agent teams
+
+For single-file changes under ~50 LOC, orchestration overhead
+exceeds the work. Use a single agent. Agent teams pay off when at
+least three of:
+
+- Subtasks are genuinely independent.
+- Each subtask ≥ 10 minutes of agent work.
+- Rubric is writable before work starts.
+- Human can't meaningfully review each subtask individually.
+- Aggregated cost is bounded by a budget cap.
+
+For the full chapter — Chief of Staff / Executor / Judge contracts,
+5-layer validation stack, worktree lifecycle, anti-patterns,
+minimum viable implementation — see
+[`docs/agent-teams.md`](./docs/agent-teams.md).

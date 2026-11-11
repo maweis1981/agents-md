@@ -451,7 +451,9 @@ Git 本身并不是为 AI Agent 协作设计的。未来会逐渐出现：
 - **17.2 Prompt 即代码**：版本化、review、和 eval 配对、超 10 行不准
   inline。见 [`docs/prompts.zh-CN.md`](./docs/prompts.zh-CN.md)。
 - **17.3 AI 功能的 Evals**：每个 prompt 一套 eval；PR 跑；回归阻断
-  合并；阈值入库。见 [`docs/evals.zh-CN.md`](./docs/evals.zh-CN.md)。
+  合并；阈值入库。**作为 LLM-as-judge 用时，Judge 模型必须和被判
+  输出来自不同模型家族** —— 见 `docs/evals.zh-CN.md` 的"跨模型 Judge"
+  一节。见 [`docs/evals.zh-CN.md`](./docs/evals.zh-CN.md)。
 - **17.4 可观测性与成本闸**：每次 LLM 调用 trace；记 prompt 版本 +
   token + 成本；PII 脱敏；per-session 预算；熔断器。
   见 [`docs/observability.zh-CN.md`](./docs/observability.zh-CN.md)。
@@ -553,3 +555,64 @@ Pull Request 进展，以及归档旧的 Done 条目。未经获授权策略提�
 
 完整操作检查清单、中立的多仓库示例、推荐视图与计划节奏见
 [`docs/github-issues-projects.zh-CN.md`](./docs/github-issues-projects.zh-CN.md)。
+
+---
+
+## 二十、Agent 团队（编排式多 Agent 运行）
+
+一至十九节描述的是**单个 Agent**。当你同时跑多个 Agent（Lauren Tan /
+Cursor 2.0 / Grok Build / Claude Code worktrees 模式）时，会出现
+单 Agent 规则不覆盖的新失败模式。这一节约定编排契约。
+
+### 20.1 三个必备角色
+
+每次多 Agent 运行必须有：
+
+- **Chief of Staff** —— 规划、分派、监控、聚合。**不写代码**。
+- **Executor** —— 在自己隔离的 worktree / 容器里干活。一个 Executor
+  一个任务。
+- **Judge** —— 按预先写好的 rubric 给 Executor 输出打分。**和被判
+  Executor 不同模型家族**。
+
+**禁止扁平的"N 个平权 Agent 共享文件"。**
+
+### 20.2 隔离工作区
+
+每个 Executor 在自己的 `git worktree`（或容器 / 远程 VM）里运行。
+**Agent 禁止共享工作目录**。Chief of Staff 用 `git format-patch`
+聚合 Executor 的 patch，**不是**让 Executor 们都往同一个分支提交。
+
+### 20.3 跨模型 Judge
+
+Judge 的模型家族必须和被判 Executor 不同；eval 成本允许时优先跨厂商。
+在分歧好解决的任务上，**两个不同厂商 Judge 多数票**胜过单个强 Judge。
+Judge **只**看 rubric + 输出 —— 不给原任务 prompt、不给 plan、
+不给 Executor 自述。
+
+完整跨模型 Judge 契约见 §17.3。
+
+### 20.4 Chief of Staff 硬预算
+
+Chief of Staff 必须有硬性预算上限（token + 美元 + 墙钟时间）。
+超限 → **停住整个 fleet**，上报人类。无 cap 的编排器几分钟烧光额度。
+
+### 20.5 人类 review 看聚合
+
+人类 review 在 Chief of Staff 聚合后的 PR 上，**不是**每个 Executor
+中间分支上。Judge 是让体量能上去的那一层；人类 review 是 meta-gate。
+**Executor 禁止自己开 PR 到 `main`**。
+
+### 20.6 什么时候**不**用 Agent 团队
+
+单文件改动 < ~50 LOC 时，编排开销比工作本身还大。用单个 Agent。
+Agent 团队的回报出现在至少满足三条时：
+
+- 子任务天然独立。
+- 每个子任务 ≥ 10 分钟 Agent 工作量。
+- Rubric 开工前就能写出来。
+- 人类没法有意义地单独 review 每个子任务。
+- 聚合成本有预算 cap。
+
+完整章节（Chief of Staff / Executor / Judge 契约、5 层验证栈、
+worktree 生命周期、反模式、最小可用实现）见
+[`docs/agent-teams.zh-CN.md`](./docs/agent-teams.zh-CN.md)。

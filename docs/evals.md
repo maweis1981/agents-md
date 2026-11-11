@@ -116,6 +116,56 @@ threshold, stop. The order of operations is:
 4. Fix the prompt, fix the dataset, or — last resort — change the
    threshold *with a justification committed to the PR description*.
 
+## Cross-model judge (required for agent-team runs)
+
+When an **LLM-as-judge** eval scores an Executor's output (see
+[`agent-teams.md`](./agent-teams.md)), the judge must:
+
+- **Use a different model family than the Executor.** Executor
+  Claude Sonnet → Judge GPT-5 / Gemini / open-weights.
+- **Where eval cost allows, use a different vendor.** Reduces
+  shared-training bias.
+- **Receive only the rubric and the Executor output.** Not the
+  original task prompt, not the plan, not the Executor's self-report.
+  Context bias is the #1 reason LLM-as-judge false-positives:
+  the Judge rationalizes whatever the Executor produced as "fitting
+  the task."
+- **Return pass/fail + score + rationale.** No modifying the output.
+
+### Two-vote quorum
+
+When a single judge is cheap but wrong often, two judges from
+different vendors + majority vote beats one strong judge. Cost ~2×
+and false positives drop ~5–10× in internal reports from teams
+running the Lauren Tan / `pstack` pattern.
+
+```
+Executor:   Claude Sonnet 4.5
+Judge 1:    GPT-5
+Judge 2:    Gemini 2.5 Pro
+Result:     2/2 pass → accept
+            1/2 pass → request third opinion or human
+            0/2 pass → reject + prompt re-run
+```
+
+### Judge prompt skeleton
+
+The Judge prompt should literally be:
+
+```
+You are scoring the following output against the following rubric.
+You will NOT be given the original task.
+Return JSON: { "pass": bool, "score": 0..1, "rationale": "..." }
+
+RUBRIC:
+<pasted rubric>
+
+OUTPUT:
+<pasted output>
+```
+
+Keep it short. The Judge's job is scoring, not helping.
+
 ## Tooling worth knowing
 
 - [Inspect](https://inspect.aisi.org.uk/) (UK AI Safety Institute) —
