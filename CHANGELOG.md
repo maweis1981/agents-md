@@ -11,14 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `templates/AGENTS.md` team playbook, after Atlassian's Team Playbook
-  plays: **DACI** (the agent is Driver, one named human is Approver;
-  the agent stops and asks before spending, irreversible steps, launches
-  and deletions, and never turns on auto-renew by default),
-  **Definition of Done per task type** (feature, bug fix, content/SEO
-  page, UI, analytics event, migration, infrastructure), and the
-  **project poster**. New `templates/POSTER.md`; `templates/CLAUDE.md`
-  points to the playbook.
+- `templates/AGENTS.md` team playbook (agent edition): seven plays from
+  Atlassian's Team Playbook, with the human ceremony removed (no
+  standups, story points, sprint rituals or retro meetings): **DACI
+  roles** with a stop-and-ask list (spend, irreversible steps, launches,
+  deletions; never auto-renew by default), **project poster / working
+  backwards**, **Epic → Story → Subtask** mapped to parent Issue,
+  sub-issue and PR checklist, **INVEST** as the Ready gate,
+  **Definition of Done per task type**, a five-line **pre-mortem**, and
+  a **retrospective** that writes lessons back as rules. New
+  `templates/POSTER.md`; `templates/CLAUDE.md` points to the playbook.
 - `docs/agent-teams.md` (+ zh-CN) — new `STANDARDS.md` §20. Codifies
   the orchestration pattern now shipping in the wild (Lauren Tan /
   Cursor 2.0 / Grok Build / Claude Code worktrees): Chief of Staff

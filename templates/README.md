@@ -8,8 +8,8 @@ Drop-in files for downstream projects that want to adopt the
 | File | Where to put it in your project | Purpose |
 | --- | --- | --- |
 | [`CLAUDE.md`](./CLAUDE.md) | Repo root | Entry point Claude Code reads automatically. |
-| [`AGENTS.md`](./AGENTS.md) | Repo root | Entry point OpenAI Codex / Cursor / Devin / Windsurf read automatically. Includes the team playbook: DACI, Definition of Done per task type, project poster. |
-| [`POSTER.md`](./POSTER.md) | Repo root | Project poster: goal, success metrics, non-goals, risks, written backwards from the result. |
+| [`AGENTS.md`](./AGENTS.md) | Repo root | Entry point OpenAI Codex / Cursor / Devin / Windsurf read automatically. Includes the team playbook (agent edition): DACI roles, project poster, Epic → Story → Subtask with INVEST, Definition of Done per task type, pre-mortem, retrospective into rules. |
+| [`POSTER.md`](./POSTER.md) | Repo root | Project poster: goal, success metrics, non-goals, pre-mortem, written backwards from the result. |
 | [`.github/workflows/preview.yml`](./.github/workflows/preview.yml) | `.github/workflows/` | A PR-only, debounced preview workflow that follows the CI/CD section of the spec. |
 | [`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md) | `.github/` | PR description scaffold. |
 | [`.commitlintrc.json`](./.commitlintrc.json) | Repo root | `@commitlint/cli` config enforcing the agents-md commit rules. |

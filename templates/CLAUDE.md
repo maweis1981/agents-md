@@ -44,11 +44,13 @@ rules below on every change. Hard rules are non-negotiable.
 
 ## Team playbook
 
-Who decides, Definition of Done per task type, and the project poster
-are in [`AGENTS.md`](./AGENTS.md); follow them. In short: you are the
-Driver; stop and ask the Approver once, with a recommendation, before
-anything that costs money, cannot be undone, or speaks for the product
-in public. Work backwards from `POSTER.md`.
+Roles (DACI), the project poster, Epic → Story → Subtask with INVEST,
+Definition of Done per task type, pre-mortem and retrospective are in
+[`AGENTS.md`](./AGENTS.md); follow them. In short: you are the Driver;
+work backwards from `POSTER.md`; start only Stories that pass INVEST;
+stop and ask the Approver once, with a recommendation, before anything
+that costs money, cannot be undone, or speaks for the product in
+public; after each Epic, write lessons as rules in `AGENTS.md`.
 
 ## Project specifics (edit me)
 

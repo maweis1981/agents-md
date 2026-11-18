@@ -31,7 +31,15 @@ Decision at the date above: invest more, keep as is, or stop.
 
 - TODO: what this will not do in this period, even if asked.
 
-## Risks and assumptions
+## Pre-mortem
+
+It is the date above and this failed. The most likely reasons:
+
+1. TODO: reason, and the cheapest early check or the guard added now.
+2. TODO
+3. TODO
+
+## Assumptions
 
 - TODO: what must be true for this to work, and the cheapest test of it.
 
