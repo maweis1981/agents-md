@@ -35,6 +35,67 @@
 - Do not change Priority, Iteration, Target date, scope, or acceptance
   criteria when that creates a new commitment without human authority.
 
+## Project poster
+
+Every product repository has a `POSTER.md` at its root, written backwards
+from the result: goal, success metrics, non-goals, risks
+([template](https://github.com/maweis1981/agents-md/blob/main/templates/POSTER.md)).
+
+- Work towards it. A PR that moves no success metric says why it is
+  still worth doing.
+- If `POSTER.md` is missing or still has `TODO`, draft it from what the
+  repository and its data show, and get the Approver's sign-off before
+  building features.
+- Changing a goal, metric or non-goal is the Approver's decision.
+
+## Who decides (DACI)
+
+| Role | Who |
+| --- | --- |
+| **Driver** | the agent doing the task: plans it, does it, reports it |
+| **Approver** | one named human (edit me: `<owner>`); the only one who can say yes to the list below |
+| **Contributors** | reviewer agents, CI, and anyone whose data or code the task uses |
+| **Informed** | the team, through the Issue, the PR and the regular report |
+
+The Driver decides alone, and says what it did: branches, draft PRs,
+code and content inside the agreed scope, fixes from review, reverting
+its own change. Merging its own PR once Definition of Done holds is the
+Driver's call only if the Approver has given that standing approval
+below.
+
+The Driver **stops and asks the Approver once, with a recommendation**,
+before anything that costs money, cannot be undone, or speaks for the
+product in public:
+
+- buying or renewing anything (domains, plans, seats, ads), or spend
+  above the agreed budget; never turn on auto-renew by default;
+- production deploys outside the normal merge-to-`main` path, and
+  infrastructure changes that `plan` / `diff` cannot preview;
+- launching: removing `noindex`, store submissions, announcements,
+  emails or messages to users;
+- deleting a repository, a database, a cloud resource, or a public
+  page that has traffic (redirect it instead);
+- changing the poster's goal, metrics or non-goals.
+
+Standing approvals (edit me): `<e.g. the Driver may merge its own PR
+when Definition of Done holds>`.
+
+## Definition of Done (per task type)
+
+A task is Done when every line for its type holds and the PR says how
+each one was checked. These add to the general Definition of Done in
+[STANDARDS.md §19.3](https://github.com/maweis1981/agents-md/blob/main/STANDARDS.md#193-ready-done-and-iterations).
+
+| Task | Done when |
+| --- | --- |
+| Feature | acceptance criteria met; tests cover the new behaviour; preview deploy checked by hand; docs updated |
+| Bug fix | a test that failed before the fix passes after it; root cause named in the PR |
+| Content / SEO page | facts checked against sources; title, description and canonical set; linked from at least one existing page; after deploy: returns 200, no `noindex`, in the sitemap |
+| UI change | checked at phone and desktop width; Lighthouse mobile Accessibility and SEO 90 or more |
+| Analytics event | defined in the tracking plan first; seen arriving in the analytics tool's realtime view |
+| Migration | run on a non-production database first; rollback written down; direct connection |
+| Infrastructure | `plan` / `diff` reviewed with no surprise deletes; after apply, the next `plan` is empty |
+
 ## Project specifics (edit me)
 
 - **Stack**: <e.g. Next.js + Prisma + Neon, deployed on Vercel>.
